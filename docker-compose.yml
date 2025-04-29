@@ -9,6 +9,23 @@ services:
     container_name: delivery_nginx
     depends_on:
       - app
+    networks:
+      - delivery_network
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "33060:80"
+    environment:
+      PMA_HOST: "db"
+      MYSQL_ROOT_PASSWORD: "root"
+      UPLOAD_LIMIT: "1000M"
+    networks:
+      - delivery_network
 
   app:
     build:
@@ -19,10 +36,12 @@ services:
     depends_on:
       - db
     container_name: delivery_app
+    networks:
+      - delivery_network
 
   db:
     image: mysql:latest
-    restart: always
+    restart: unless-stopped
     volumes:
       - ./tmp/db:/var/lib/mysql
     environment:
@@ -32,3 +51,9 @@ services:
       - "8101:3306"
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     container_name: delivery_db
+    networks:
+      - delivery_network
+
+networks:
+  delivery_network:
+    driver: bridge
