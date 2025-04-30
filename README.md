@@ -6,15 +6,20 @@
 
 Далее докачиваем все необходимое 
 
-`` composer install ``
+````
+composer install 
+````
 
 Далее билдим через докер
 
-`` docker-compose build ``
-
+````
+docker-compose build
+````
 И поднимаем контейнеры
 
-`` docker-compose up -d ``
+```` 
+docker-compose up -d 
+````
 
 Выполняем миграции и заполняем базу данными
 
@@ -27,4 +32,6 @@ docker exec -it delivery_app php db:seed
 
 Просто поднимайте контейнеры
 
-`` docker-compose up -d ``
+````
+docker-compose up -d 
+````
