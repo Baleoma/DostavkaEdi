@@ -27,7 +27,7 @@ class RestaurantController extends Controller
     {
         $create_restaurant = Restaurant::create($request->validated());
 
-        return new RestaurantRequest($create_restaurant);
+        return new RestaurantResource($create_restaurant);
     }
 
     /**

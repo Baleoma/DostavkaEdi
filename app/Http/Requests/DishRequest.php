@@ -11,7 +11,7 @@ class DishRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,7 @@ class DishRequest extends FormRequest
             'description' => 'nullable|string',
             'price' => 'required|numeric|min:0',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'is_available' => 'boolean',
+            'is_available' => 'nullable|boolean',
             'restaurant_id' => 'required|exists:restaurants,id',
             'category_id' => 'required|exists:categories,id',
         ];

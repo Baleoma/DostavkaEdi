@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DishRequest;
+use App\Http\Resources\DiscountResource;
 use App\Http\Resources\DishResource;
 use App\Models\Dish;
 use Illuminate\Http\Request;
@@ -23,9 +24,9 @@ class DishController extends Controller
      */
     public function store(DishRequest $request)
     {
-        $dish = Dish::create($request->validated());
+        $create_dish = Dish::create($request->validated());
 
-        return new DishResource($dish);
+        return new DishResource($create_dish);
     }
 
     /**
@@ -33,9 +34,7 @@ class DishController extends Controller
      */
     public function show(string $id)
     {
-        $dish = Dish::findOrFail($id);
-
-        return new DishResource($dish);
+        return new DiscountResource(Dish::findOrFail($id));
     }
 
     /**
