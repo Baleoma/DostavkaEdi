@@ -35,7 +35,7 @@ class RestaurantController extends Controller
      */
     public function show(string $id)
     {
-        return new RestaurantResource(Category::findOrFail($id));
+        return new RestaurantResource(Restaurant::findOrFail($id));
     }
 
     /**
@@ -54,6 +54,7 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
         $restaurant->delete();
+
         return response()->json(null, 204);
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DiscountController;
 use App\Http\Controllers\Api\DishController;
+use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\StatusController;
 use Illuminate\Http\Request;
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
         'discounts' => DiscountController::class,
         'restaurants' => RestaurantController::class,
         'dishes' => DishController::class,
+        'orders' => OrderController::class,
     ]);
 
     // Выход из системы
