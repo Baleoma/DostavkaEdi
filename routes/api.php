@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\DiscountController;
+use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\StatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -20,6 +23,9 @@ Route::middleware('auth:sanctum')->group(function () {
 // Ресурсы API
     Route::apiResources([
         'categories' => CategoryController::class,
+        'statuses' => StatusController::class,
+        'discounts' => DiscountController::class,
+        'restaurants' => RestaurantController::class,
     ]);
 
     // Выход из системы
