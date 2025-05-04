@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DiscountController;
 use App\Http\Controllers\Api\DishController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\OrderitemController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\StatusController;
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
         'restaurants' => RestaurantController::class,
         'dishes' => DishController::class,
         'orders' => OrderController::class,
+        'orderitems' => OrderitemController::class,
     ]);
 
     // Выход из системы
