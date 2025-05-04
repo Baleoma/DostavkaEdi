@@ -17,7 +17,12 @@ class RestaurantFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->company(),
+            'description' => $this->faker->paragraph(3),
+            'image' => $this->faker->imageUrl(200, 200),
+            'rating' => $this->faker->randomFloat(1, 0, 5),
+            'opens_at' => $this->faker->time(),
+            'closes_at' => $this->faker->time(),
         ];
     }
 }
