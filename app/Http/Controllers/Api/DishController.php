@@ -34,7 +34,7 @@ class DishController extends Controller
      */
     public function show(string $id)
     {
-        return new DiscountResource(Dish::findOrFail($id));
+        return new DishResource(Dish::findOrFail($id));
     }
 
     /**
