@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DiscountController;
 use App\Http\Controllers\Api\DishController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\OrderitemController;
 use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\StatusController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +34,8 @@ Route::middleware('auth:sanctum')->group(function () {
         'dishes' => DishController::class,
         'orders' => OrderController::class,
         'orderitems' => OrderitemController::class,
+        'carts' => CartController::class,
+        'reviews' => ReviewController::class,
     ]);
 
     // Выход из системы

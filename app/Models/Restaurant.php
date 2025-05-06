@@ -16,6 +16,10 @@ class Restaurant extends Model
         return $this->hasMany(Order::class, 'restaurant_id');
     }
 
+    public function reviews() {
+        return $this->hasMany(Order::class, 'restaurant_id');
+    }
+
     public function dishes() {
         return $this->hasMany(Dish::class, 'restaurant_id');
     }
