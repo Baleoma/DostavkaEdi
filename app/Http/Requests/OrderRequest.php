@@ -29,7 +29,6 @@ class OrderRequest extends FormRequest
         'comment' => 'nullable|string|max:1000',
         'status_id' => 'required|exists:statuses,id',
         'user_id' => 'required|exists:users,id',
-        'restaurant_id' => 'required|exists:restaurants,id',
     ];
     }
 }

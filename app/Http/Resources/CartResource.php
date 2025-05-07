@@ -17,8 +17,8 @@ class CartResource extends JsonResource
         return [
             'id' => $this->id,
             'quantity' => $this->quantity,
+            'dish' => new DishResource($this->dish), // Существующая связь `dish`
             'user_id' => $this->user_id,
-            'dish_id' => $this->dish_id,
         ];
     }
 }

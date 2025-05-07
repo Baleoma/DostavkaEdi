@@ -24,7 +24,6 @@ class OrderitemRequest extends FormRequest
         return [
             // quantity - количество блюд в заказе
             'quantity' => 'required|integer|min:1',
-            'price' => 'required|numeric|min:0',
             'order_id' => 'required|exists:orders,id',
             'dish_id' => 'required|exists:dishes,id',
         ];

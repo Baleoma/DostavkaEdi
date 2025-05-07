@@ -7,14 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    protected $fillable = ['total_price', 'discount', 'final_price', 'address', 'comment', 'status_id', 'user_id', 'restaurant_id'];
+    protected $fillable = ['total_price', 'discount', 'final_price', 'address', 'comment', 'status_id', 'user_id'];
 
     /** @use HasFactory<\Database\Factories\OrderFactory> */
     use HasFactory;
-
-    public function restaurant() {
-        return $this->belongsTo(Restaurant::class);
-    }
 
     public function user() {
         return $this->belongsTo(User::class);
@@ -24,7 +20,8 @@ class Order extends Model
         return $this->belongsTo(Status::class);
     }
 
-    public function orderitems() {
-        return $this->hasMany(Orderitem::class, 'order_id');
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }
