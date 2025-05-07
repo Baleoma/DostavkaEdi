@@ -23,4 +23,8 @@ class Dish extends Model
     public function orderitems() {
         return $this->hasMany(Orderitem::class, 'dish_id');
     }
+
+    public function carts() {
+        return $this->hasMany(Cart::class, 'dish_id');
+    }
 }

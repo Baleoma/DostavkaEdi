@@ -12,7 +12,8 @@ class Restaurant extends Model
     /** @use HasFactory<\Database\Factories\RestaurantFactory> */
     use HasFactory;
 
-    public function orders() {
+
+    public function reviews() {
         return $this->hasMany(Order::class, 'restaurant_id');
     }
 

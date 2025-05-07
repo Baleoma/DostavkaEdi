@@ -12,7 +12,7 @@ class OrderResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-    public function toArray(Request $request): array
+    public function toArray($request)
     {
         return [
             'id' => $this->id,
@@ -23,7 +23,15 @@ class OrderResource extends JsonResource
             'comment' => $this->comment,
             'status_id' => $this->status_id,
             'user_id' => $this->user_id,
-            'restaurant_id' => $this->restaurant_id,
+            'items' => $this->whenLoaded('items', function () {
+                return $this->items->map(function ($item) {
+                    return [
+                        'id' => $item->id,
+                        'quantity' => $item->quantity,
+                        'dish' => new DishResource($item->dish), // Существующая связь `dish`
+                    ];
+                });
+            }),
         ];
     }
 }

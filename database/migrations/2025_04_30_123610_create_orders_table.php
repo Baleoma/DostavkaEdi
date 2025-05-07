@@ -17,10 +17,9 @@ return new class extends Migration
             $table->boolean('discount')->default(false);
             $table->decimal('final_price', 10, 2);
             $table->string('address');
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->foreignId('status_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('restaurant_id')->constrained();
             $table->timestamps();
         });
     }

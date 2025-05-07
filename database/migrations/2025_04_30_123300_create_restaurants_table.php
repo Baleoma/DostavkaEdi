@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image')->nullable();
-            $table->double('rating');
+            $table->double('rating')->nullable();
             $table->time('opens_at');
             $table->time('closes_at');
             $table->timestamps();

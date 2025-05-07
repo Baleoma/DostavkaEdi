@@ -25,4 +25,5 @@ class DishResource extends JsonResource
             'category_id' => $this->category_id,
         ];
     }
+
 }
