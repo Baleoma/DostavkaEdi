@@ -25,7 +25,6 @@ class RestaurantRequest extends FormRequest
         'name' => 'required|string|max:255',
         'description' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'rating' => 'nullable|numeric|between:0,5',
         'opens_at' => 'required|date_format:H:i',
         'closes_at' => 'required|date_format:H:i|after:opens_at',
     ];

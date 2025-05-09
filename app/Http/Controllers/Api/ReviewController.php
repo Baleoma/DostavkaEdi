@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReviewRequest;
 use App\Http\Resources\ReviewResource;
+use App\Models\Restaurant;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,8 @@ class ReviewController extends Controller
     public function store(ReviewRequest $request)
     {
         $created_review = Review::create($request->validated());
+
+        return new ReviewResource($created_review);
     }
 
     /**
@@ -52,5 +55,25 @@ class ReviewController extends Controller
         $review->delete();
 
         return response(null, 204);
+    }
+
+    public function getrestaurantreviews($restaurantId)
+    {
+        // Ищем отзывы по ID ресторана
+        $reviews = Review::with('user:id,name') // загружаем имя пользователя
+        ->where('restaurant_id', $restaurantId)
+            ->get();
+
+        if ($reviews->isEmpty()) {
+            return response()->json([
+                'message' => 'Отзывы не найдены'
+            ], 404);
+        }
+
+        return response()->json([
+            'restaurant_id' => $restaurantId,
+            'reviews_count' => $reviews->count(),
+            'reviews' => $reviews
+        ]);
     }
 }

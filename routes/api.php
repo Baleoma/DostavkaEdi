@@ -33,6 +33,7 @@ Route::prefix('guest')->group(function () {
     // Отзывы (только чтение)
     Route::get('/reviews', [ReviewController::class, 'index']);
     Route::get('/reviews/{review}', [ReviewController::class, 'show']);
+    Route::get('/restaurants/{restaurantId}/reviews', [ReviewController::class, 'getrestaurantreviews']);
 });
 
 // ======================
@@ -66,7 +67,7 @@ Route::middleware('auth:sanctum')->prefix('user')->group(function () {
 // ======================
 // АДМИНИСТРАТОР
 // ======================
-Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth:sanctum', 'admin'])->prefix('admin')->group(function () {
     // Справочники
     Route::apiResources([
         'categories' => CategoryController::class,
