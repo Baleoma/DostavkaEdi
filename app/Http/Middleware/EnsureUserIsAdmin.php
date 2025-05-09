@@ -10,12 +10,12 @@ class EnsureUserIsAdmin
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if (!$request->user() || $request->user()->role !== 'admin') {
-            return response()->json([
-                'message' => 'Forbidden. Admins only.'
-            ], 403);
+        // Проверяем авторизацию и роль
+        if (auth()->check() && auth()->User()->role_id === 1) {
+            return $next($request);
         }
 
-        return $next($request);
+        // Если не админ - ошибка 403
+        abort(403, 'Доступ запрещен');
     }
 }

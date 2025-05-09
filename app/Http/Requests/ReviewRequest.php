@@ -11,7 +11,7 @@ class ReviewRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class ReviewRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'content' => 'text|nullable',
+            'content' => 'string|nullable',
             'rating' => 'required|integer|between:1,5',
             'user_id' => 'required|exists:users,id',
             'restaurant_id' => 'required|exists:restaurants,id',
