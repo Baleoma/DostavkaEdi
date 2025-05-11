@@ -56,6 +56,7 @@ docker-compose up -d
 ## Адреса
 
 - localhost:8081/api/access/rote - Сам api
+- localhost:8081/swagger/documentation - Документация к api
 - localhost:33060 - PhpMyAdmin
 
 ## Роуты
