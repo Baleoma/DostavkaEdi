@@ -14,9 +14,16 @@ class DishController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return DishResource::collection(Dish::all());
+        $sortDirection = $request->input('sort', 'desc');
+
+        $allowedSortDirections = ['asc', 'desc'];
+        $sortDirection = in_array($sortDirection, $allowedSortDirections) ? $sortDirection : 'desc';
+
+        $dishes = Dish::orderBy('name', $sortDirection)->get();
+
+        return DishResource::collection($dishes);
     }
 
     /**

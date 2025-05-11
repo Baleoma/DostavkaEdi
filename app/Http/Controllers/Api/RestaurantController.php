@@ -15,9 +15,16 @@ class RestaurantController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return RestaurantResource::collection(Restaurant::all());
+        $sortDirection = $request->input('sort', 'desc');
+
+        $allowedSortDirections = ['asc', 'desc'];
+        $sortDirection = in_array($sortDirection, $allowedSortDirections) ? $sortDirection : 'desc';
+
+        $restaraunts = Restaurant::orderBy('name', $sortDirection)->get();
+
+        return RestaurantResource::collection($restaraunts);
     }
 
     /**
